@@ -1,3 +1,4 @@
+<?php header('X-Frame-Options: DENY'); ?>
 <!DOCTYPE html>
 <html lang="ja" class="chrome chrome112">
 <head>
