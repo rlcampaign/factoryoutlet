@@ -45,7 +45,7 @@ const discount = parseInt(discountSelect.value);
 
 if (!isNaN(price)) {
 noDscTotalPrice += price;
-const discountedPrice = price - (price * discount) / 100;
+const discountedPrice = Math.ceil(price * (1 - discount/ 100)) ;
 totalPrice += discountedPrice;
 }
 }
@@ -89,7 +89,7 @@ function calculatePrice() {
 		if (!isNaN(price)) {
 		noDscTotalPrice += price;
 		priceInput.value = price.toLocaleString("ja-JP", {style:"currency", currency:"JPY"});
-		const discountedPrice = price * (1 - discount/100);
+		const discountedPrice = Math.ceil(price * (1 - discount/ 100));
 		totalPrice += discountedPrice;
 		countProduct +=1;
 		}
@@ -119,8 +119,8 @@ function calculatePrice() {
 
 noDsclabel.innerHTML = noDscTotalPrice.toLocaleString("ja-JP", {style:"currency", currency:"JPY"});
 // Calculate final price
-var finalPrice = totalPrice - Math.round(totalPrice*(dscBuy3/100));
-	finalPrice = finalPrice - Math.round(finalPrice*(dscLMP/100));
+var finalPrice = Math.ceil(totalPrice * (1 - dscBuy3/100));
+	finalPrice = Math.ceil(finalPrice * (1 - dscLMP/100));
 	//finalPrice = finalPrice * 1.1;
 // Update label with animation
 
